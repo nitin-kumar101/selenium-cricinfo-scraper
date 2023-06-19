@@ -9,6 +9,7 @@ PATH = "/home/imnitin/code_snippets/tweets_scrapping/chromedriver"
 driver = webdriver.Chrome(PATH)
 driver.get("https://www.espncricinfo.com/team/india-6")
 
+path = "" #Path of the directory where you want to store your cricinfo.csv file
 Headings = []
 Texts = []
 
@@ -39,10 +40,10 @@ while True:
     if len(set(Texts))%70 == 0:
       df = pd.DataFrame(zip(Headings,Texts),columns=['Headings','Texts'])
       df.drop_duplicates()
-      df.to_csv(r"/home/imnitin/code_snippets/tweets_scrapping/cricinfo.csv",index=False)
+      df.to_csv(f"{path}/cricinfo.csv",index=False)
 
 
 print(len(set(Texts)))
 df = pd.DataFrame(zip(Headings,Texts),columns=['Headings','Texts'])
 df.drop_duplicates()
-df.to_csv(r"/home/imnitin/code_snippets/tweets_scrapping/cricinfo.csv",index=False)
+df.to_csv(f"{path}/cricinfo.csv",index=False)
